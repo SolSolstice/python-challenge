@@ -1,6 +1,6 @@
-                                                                                                                                                    #Challenge 3 - Python 
-                                                                                                                                                    #Matthew Copello
-                                                                                                                                                    # ~ Solstice 
+                                                                                                                                #Challenge 3 - Python 
+                                                                                                                                #Matthew Copello
+                                                                                                                                # ~ Solstice 
 
 
 import os 
