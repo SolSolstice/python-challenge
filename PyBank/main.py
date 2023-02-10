@@ -17,6 +17,11 @@ average_value = float
 value_list2 = []
 value_list3 = []
 new_values = []
+inc = [0,''] #list w/ 2 values.. monthly increase,month we're looking at 
+dec = [0,'']
+prevrev = 0
+total_ch = 0
+
 with open(csv_path,'r',encoding='utf-8') as budget_csv: 
 
     budget_csv = csv.reader(budget_csv,delimiter=',')
@@ -25,51 +30,38 @@ with open(csv_path,'r',encoding='utf-8') as budget_csv:
    
     for row in budget_csv:
         row_count += 1
-        net_total += float(row[1])
-        value_list.append(float(row[1]))
+        rev = float(row[1])
+        net_total += rev
+        value_list.append(rev)
         month_list.append(row[0])
         max_value = max(value_list, key=float)
         min_value = min(value_list, key=float)
         value_list.index(max_value) #for finding the index of max_value
         value_list.index(min_value) #for finding the index of min_value
-        max_month = value_list.index(max_value)
-        min_month = value_list.index(min_value)
-      
+        #max_month = value_list.index(max_value)
+       # min_month = value_list.index(min_value)
 
+        # #determines where to start. looking for the first value, find where previous revenue is 0 
+        change = rev - prevrev
+        if prevrev == 0:
+            change == 0 
+        total_ch += change
+                 # ^^^ total_ch = total_ch + change
 
- #################################################
+        # greatest increase
+        if (change > inc[0]):
+            inc[0] = change
+            inc[1] = row[0]
 
-    #trying to figure out  "The changes in "Profit/Losses" over the entire period, and then the average of those changes"
- 
-#~~~~~~~~~~!!!!!!!!~~~~~~~~~~~
-# This appears to work?? Not sure why.. or if the values are correct..  would rather come up with a different solution... 
-#
-differences = value_list[0]; [-differences + (differences := x) for x in value_list[1:]]
-#print(differences)
-average_differences = differences/row_count-1
-#print(average_differences)
-
-# ~~~~~~~~~~~~!!!!!!~~~~~~~~~
-    # this appeared to *almost* work.. numbers didnt seem to add (or subtract) correctly.. 
-#i = 0
-#for n in value_list:
-#    i = (i) + (n+1)
- #   print(n)
-
-
-#########################################################
+        # greatest decrease
+        if (change < dec[0]):
+            dec[0] = change
+            dec[1] = row[0]
+        
+        prevrev = rev 
 
 
 
-
-
-#print(month_list[11])  #
-#print(month_list[38])     #
-#print(max_month)            #  Searching for correct index location 
-#print(value_list)          #
-#print(type(month_list))  #
-
-#print(value_list)
 
 
 print ("")
@@ -80,11 +72,11 @@ print (f"Total Months: {row_count}")
 print("")
 print (f"Net Total: $ {net_total:,.2f}")
 print("")
-print(f"Average Change: $ {average_differences:,.2f}")
+print(f"Average Change: $ {total_ch/(row_count-1):,.2f}")
 print("")
-print (f"Greatest Increase in Profits: {month_list[38]} ($ {max_value})")    
+print (f"Greatest Increase in Profits: {inc[1]} ($ {inc[0]})")    
 print("")
-print (f"Greatest Decrease in Profits: {month_list[11]} ($ {min_value})")
+print (f"Greatest Decrease in Profits: {dec[1]} ($ {dec[0]})")
 print ("-----------------------------------------------")
 
 '''    
