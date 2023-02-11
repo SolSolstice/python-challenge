@@ -5,8 +5,13 @@
 import os 
 import csv
 
+
+
+
+
 csv_path = os.path.join('Resources','budget_data.csv')     
 
+textpath = "financial_analysis.txt"
 mo_count = 0
 net_total = 0 
 value_list = []
@@ -63,32 +68,25 @@ with open(csv_path,'r',encoding='utf-8') as budget_csv:
 
 
 
+#file = open("Financial_Analysis.txt","w")
+#output_path = os.path.join("Output","financial analysis.txt")
+ 
+with open(textpath,'w') as file:
+
     
+    file.write("Financial Analysis\n")
+    file.write("----------------------------------------------\n")
+    file.write(f"Total Months: {mo_count}\n")
+    file.write(f"Net Total: $ {net_total:,.2f}\n")
+    file.write(f"Average Change: $ {net_delta/(mo_count-1):,.2f}\n")
+    file.write(f"Greatest Increase in Profits: {max_delta[1]} ($ {max_delta[0]})\n")
+    file.write(f"Greatest Decrease in Profits: {min_delta[1]} ($ {min_delta[0]})\n")
+    file.write("-----------------------------------------------\n")
 
-       
-     # #determines where to start. looking for the first value, find where previous revenue is 0 
-    #change = rev - prevrev
-   # if prevrev == 0:
-   #     change == 0 
-  #  total_ch += change
-            # ^^^ total_ch = total_ch + change
 
-    # greatest increase
-  #  if  change > max_delta[0]:
-    #    max_delta[0] = change
-   #     max_delta[1] = row[0]
 
-    # greatest decrease
-  #  if  change < min_delta[0]:
-   #     min_delta[0] = change
-     #   min_delta[1] = row[0]
-   #                                      # NEED TO FIND AVERAGE CHANGE ... 
-                                        # something wrong with total_ch -> only capturing the last value in list (382539)  
 
-        prevrev = rev
-print(csvheader)
-#print(firstrow)
-print(total_ch)
+
 
 print ("")
 print ("Financial Analysis")
@@ -106,10 +104,3 @@ print (f"Greatest Decrease in Profits: {min_delta[1]} ($ {min_delta[0]})")
 print ("-----------------------------------------------")
 
 
-#~~~~~~!!!!!!!~~~~~~~~~
-#print(list_of_dict)
-
-#^ Why does it print only 1 row when here 
-  #     print(list_of_dict)
- #      
-   #             ^ but all rows when here?

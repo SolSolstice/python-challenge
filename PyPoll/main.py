@@ -7,6 +7,7 @@ import csv
 
 csv_path = os.path.join('Resources','election_data.csv')
 
+textpath = "election_results.txt"
 row_count = 0
 results_list = []
 candidate_list = []
@@ -45,6 +46,27 @@ dianapercent = dianapercent * 100
 raymonpercent = raymon_count/row_count
 raymonpercent = raymonpercent * 100
 
+
+
+with open(textpath,'w') as file:
+
+
+
+    file.write("Election Results\n")
+    file.write("------------------------------------\n")
+    file.write(f"Total Votes: {row_count}\n" )
+    file.write("------------------------------------\n")
+    file.write(f"Charles Casper Stockham: % {charlespercent:,.3f} ({charles_count})\n")
+    file.write(f"Diana DeGette: % {dianapercent:,.3f} ({diana_count})\n")
+    file.write(f"Raymon Anthony Doane: % {raymonpercent:,.3f} ({raymon_count})\n")
+    file.write("------------------------------------\n")
+    file.write("Winner: Diana DeGette\n")
+    file.write("------------------------------------\n")
+
+
+
+
+
 print ("")
 print ("Election Results")
 print ("------------------------------------")
@@ -52,12 +74,12 @@ print("")
 print (f"Total Votes: {row_count}" )
 print("")
 print ("------------------------------------")
-print(f"Charles Casper Stockham: {charlespercent:,.2f} ({charles_count})")
-print(f"Diana DeGette: {dianapercent:,.2f} ({diana_count})")
-print(f"Raymon Anthony Doane: {raymonpercent:,.2f} ({raymon_count})")
+print(f"Charles Casper Stockham: % {charlespercent:,.3f} ({charles_count})")
+print(f"Diana DeGette: % {dianapercent:,.3f} ({diana_count})")
+print(f"Raymon Anthony Doane: % {raymonpercent:,.3f} ({raymon_count})")
 print ("------------------------------------")
 print("")
-print("Winner: Charles Casper Stockham")
+print("Winner: Diana DeGette")
 print("")
 print ("------------------------------------")
 
