@@ -5,7 +5,7 @@ PyBank ~
 
 This assignment was quite hard compared to the second half - PyPoll. 
 
-Ultilizng enumerate was a game changer for me.
+Ultilizing enumerate was a game changer for me.
 
 I went down a few rabbit holes, attempting to add my information to various lists, then iterating through those lists. However, the tutor Geranimo Perez suggested using
 enumerate to in order to index the rows in the csv. 
