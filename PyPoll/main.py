@@ -1,7 +1,6 @@
                                                                                                                                  # Challenge 3 - Python - PyPoll
                                                                                                                                  # Matthew Copello
-                                                                                                                                 # ~Solstice 
-
+                                                                                                                                 # ~Sol
 import os 
 import csv
 
@@ -14,7 +13,6 @@ candidate_list = []
 charles_count = 0
 diana_count = 0
 raymon_count = 0
-
 
 with open(csv_path,'r',encoding='utf-8') as election_csv:
 
@@ -35,7 +33,6 @@ with open(csv_path,'r',encoding='utf-8') as election_csv:
             diana_count += 1
         if row[2] == 'Raymon Anthony Doane':
             raymon_count += 1
-        
 
 charlespercent = charles_count/row_count
 charlespercent = charlespercent * 100
@@ -46,11 +43,7 @@ dianapercent = dianapercent * 100
 raymonpercent = raymon_count/row_count
 raymonpercent = raymonpercent * 100
 
-
-
 with open(textpath,'w') as file:
-
-
 
     file.write("Election Results\n")
     file.write("------------------------------------\n")
@@ -62,11 +55,6 @@ with open(textpath,'w') as file:
     file.write("------------------------------------\n")
     file.write("Winner: Diana DeGette\n")
     file.write("------------------------------------\n")
-
-
-
-
-
 print ("")
 print ("Election Results")
 print ("------------------------------------")
@@ -82,21 +70,3 @@ print("")
 print("Winner: Diana DeGette")
 print("")
 print ("------------------------------------")
-
-
-#print(candidate_list)
-#print(results_list)
-#print(row_count)
-
-
-
-'''
-
-~~~~~~~~~!!!!!!!!~~~~~~~~~~~
- if row[0] == ' ' or 0:
-            #missing_values = (row[0].index)
-    
-  !! ^ What if i wanted to check for missing data in the csv? 
-
-~~~~~~~~~~!!!!!!!!~~~~~~~~~~~~
-'''
