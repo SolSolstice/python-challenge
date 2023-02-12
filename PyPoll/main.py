@@ -43,7 +43,7 @@ dianapercent = dianapercent * 100
 raymonpercent = raymon_count/row_count
 raymonpercent = raymonpercent * 100
 
-with open(textpath,'w') as file:
+with open(os.path.join('Analysis','election_results.txt'), "w") as file:
 
     file.write("Election Results\n")
     file.write("------------------------------------\n")
@@ -55,6 +55,7 @@ with open(textpath,'w') as file:
     file.write("------------------------------------\n")
     file.write("Winner: Diana DeGette\n")
     file.write("------------------------------------\n")
+    
 print ("")
 print ("Election Results")
 print ("------------------------------------")

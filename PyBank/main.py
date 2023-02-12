@@ -8,7 +8,6 @@ import csv
 
 csv_path = os.path.join('Resources','budget_data.csv')     
 
-textpath = "financial_analysis.txt"
 mo_count = 0
 net_total = 0 
 min_delta = [0,''] #list w/ 2 values.. monthly increase,month we're looking at 
@@ -50,9 +49,8 @@ with open(csv_path,'r',encoding='utf-8') as budget_csv:
 
         prev_pl = rev
  
-with open(textpath,'w') as file:
+with open(os.path.join('Analysis','financial_analysis.txt'), "w") as file:
 
-    
     file.write("Financial Analysis\n")
     file.write("----------------------------------------------\n")
     file.write(f"Total Months: {mo_count}\n")
