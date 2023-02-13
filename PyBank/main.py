@@ -5,7 +5,6 @@
 import os 
 import csv
 
-
 csv_path = os.path.join('Resources','budget_data.csv')     
 
 mo_count = 0
@@ -29,23 +28,28 @@ with open(csv_path,'r',encoding='utf-8') as budget_csv:
             # rev = all the values in column B
         net_total += rev
             # net_total = net_total + all the values in column B -> stores an aggregate of column B 
-        # "i" provides an eloquent solution to the crux of my problem:
-        # finding the 2nd value and subtracting that from the first then subtracting the difference (aka: current_delta).  
+            # "i" provides an eloquent solution to the crux of my problem:
+            # finding the 2nd value and subtracting that from the first then subtracting the difference (aka: current_delta).  
 
         if i > 0:
-         # Determines where to start. looking for the first value. "If i > 0" means -> If we are on the 2nd row (index 1): do this thing.            
+            # Determines where to start. looking for the first value. "If i > 0" means -> If we are on the 2nd row (index 1): do this thing.            
            current_delta = int(rev) - int(prev_pl)
                         # prev_pl starts at 0 - as set above, then goes to each value in 
            net_delta += rev - int(prev_pl)
-           
-           # greatest delta increase
-        if current_delta > max_delta[0]:
-            max_delta[0] = current_delta
-            max_delta[1] = row[0]
-           # greatest delta decrease 
-        if current_delta < min_delta[0]:
-            min_delta[0] = current_delta
-            min_delta[1] = row[0]
+
+            # greatest delta increase
+        if current_delta > max_delta[0]:  #
+            max_delta[0] = current_delta    #
+            max_delta[1] = row[0]             #
+                                                #     ~ These 2 IF statements: ~
+                                                  #  iterate through current_delta values and sets max/min_delta [0 & 1] equal to
+                                                  #  current_delta/row[0] until max_delta is no longer
+                                                  #  smaller/larger than current_delta -> in other words: 
+                                                  #  max/min_delta has been set to the highest/lowest value. 
+            # greatest delta decrease           #
+        if current_delta < min_delta[0]:      #
+            min_delta[0] = current_delta    #
+            min_delta[1] = row[0]        #
 
         prev_pl = rev
  

@@ -1,6 +1,6 @@
-                                                                                                                                 # Challenge 3 - Python - PyPoll
-                                                                                                                                 # Matthew Copello
-                                                                                                                                 # ~Sol
+                                                                                                                    # Challenge 3 - Python - PyPoll
+                                                                                                                    # Matthew Copello
+                                                                                                                    # ~Sol
 import os 
 import csv
 
@@ -55,7 +55,7 @@ with open(os.path.join('Analysis','election_results.txt'), "w") as file:
     file.write("------------------------------------\n")
     file.write("Winner: Diana DeGette\n")
     file.write("------------------------------------\n")
-    
+
 print ("")
 print ("Election Results")
 print ("------------------------------------")
